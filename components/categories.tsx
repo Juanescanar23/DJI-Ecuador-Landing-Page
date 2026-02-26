@@ -41,7 +41,7 @@ function scrollToRegistro() {
 
 export function Categories() {
   return (
-    <section id="categorias" className="relative py-24 lg:py-32">
+    <section id="categorias" className="relative overflow-hidden py-24 lg:py-32">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] rounded-full bg-primary/3 blur-[100px]" />

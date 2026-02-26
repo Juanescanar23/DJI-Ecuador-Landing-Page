@@ -86,7 +86,7 @@ export function RegistrationForm() {
 
   if (status === "success") {
     return (
-      <section id="registro" className="relative py-24 lg:py-32">
+      <section id="registro" className="relative overflow-hidden py-24 lg:py-32">
         <div className="mx-auto max-w-lg px-4 lg:px-8">
           <Reveal>
             <div className="glass rounded-2xl p-8 text-center">
@@ -108,7 +108,7 @@ export function RegistrationForm() {
   }
 
   return (
-    <section id="registro" className="relative py-24 lg:py-32">
+    <section id="registro" className="relative overflow-hidden py-24 lg:py-32">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/4 blur-[100px]" />
