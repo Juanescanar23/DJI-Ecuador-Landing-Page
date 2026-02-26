@@ -5,7 +5,7 @@ Landing page oficial para el lanzamiento y captación de leads de DJI Ecuador.
 ## Autoría
 
 - Proyecto creado por **Jectstore**.
-- **Autor intelectual:** Jectstore.
+- **Autor intelectual:** JectCode.
 
 ## Descripción
 
