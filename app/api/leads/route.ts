@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       timestamp: new Date().toISOString(),
     }
 
-    console.log("[DJI Ecuador] New lead registered:", JSON.stringify(lead, null, 2))
+    console.log("[DJI.ec] New lead registered:", JSON.stringify(lead, null, 2))
 
     // Forward to webhook if configured
     const webhookUrl = process.env.LEAD_WEBHOOK_URL
@@ -70,9 +70,9 @@ export async function POST(request: Request) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(lead),
         })
-        console.log("[DJI Ecuador] Lead forwarded to webhook successfully")
+        console.log("[DJI.ec] Lead forwarded to webhook successfully")
       } catch (webhookError) {
-        console.error("[DJI Ecuador] Webhook forwarding failed:", webhookError)
+        console.error("[DJI.ec] Webhook forwarding failed:", webhookError)
         // Don't fail the request if webhook fails
       }
     }

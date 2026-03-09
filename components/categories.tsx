@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { Reveal } from "@/components/reveal"
 
@@ -62,15 +63,25 @@ export function Categories() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.08}>
-              <div className="glass rounded-xl overflow-hidden group h-full flex flex-col transition-all duration-300 hover:bg-white/[0.06]">
+              <motion.div
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="glass rounded-xl overflow-hidden h-full flex flex-col"
+              >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={cat.image}
-                    alt={cat.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={cat.image}
+                      alt={cat.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
@@ -80,14 +91,16 @@ export function Categories() {
                   <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {cat.description}
                   </p>
-                  <button
+                  <motion.button
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
                     onClick={scrollToRegistro}
                     className="mt-3 inline-flex w-fit items-center text-xs font-semibold text-primary transition-colors hover:text-primary/80"
                   >
                     {"Más información →"}
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>

@@ -16,11 +16,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "DJI Ecuador | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
+  title: "DJI.ec | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
   description:
     "Distribuidor oficial DJI en Ecuador. Conoce el DJI Mavic 4 Pro y regístrate para el lanzamiento oficial el 15 de marzo de 2026.",
   keywords: [
-    "DJI Ecuador",
+    "DJI.ec",
     "DJI Mavic 4 Pro",
     "drones profesionales Ecuador",
     "distribuidor oficial DJI",
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
     "drones para video",
     "drones para inspección",
     "drones para topografía",
-    "comprar drone DJI Ecuador",
-    "lanzamiento DJI Ecuador",
+    "comprar drone DJI.ec",
+    "lanzamiento DJI.ec",
   ],
   openGraph: {
-    title: "DJI Ecuador | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
+    title: "DJI.ec | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
     description:
       "Distribuidor oficial DJI en Ecuador. Conoce el DJI Mavic 4 Pro y regístrate para el lanzamiento oficial el 15 de marzo de 2026.",
     type: "website",
     locale: "es_EC",
-    siteName: "DJI Ecuador",
+    siteName: "DJI.ec",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DJI Ecuador | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
+    title: "DJI.ec | Lanzamiento DJI Mavic 4 Pro — 15 de marzo 2026",
     description:
       "Distribuidor oficial DJI en Ecuador. Conoce el DJI Mavic 4 Pro y regístrate para el lanzamiento oficial el 15 de marzo de 2026.",
   },
@@ -66,7 +66,7 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                name: "DJI Ecuador",
+                name: "DJI.ec",
                 description: "Distribuidor oficial DJI en Ecuador",
                 url: "https://dji.ec",
               },
@@ -79,7 +79,7 @@ export default function RootLayout({
                   "Lanzamiento oficial del DJI Mavic 4 Pro en Ecuador por el distribuidor oficial.",
                 organizer: {
                   "@type": "Organization",
-                  name: "DJI Ecuador",
+                  name: "DJI.ec",
                 },
               },
             ]),

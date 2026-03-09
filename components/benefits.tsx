@@ -1,8 +1,16 @@
 "use client"
 
+import { useEffect, useRef } from "react"
+import { motion } from "framer-motion"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Reveal } from "@/components/reveal"
 import { BadgeCheck, Headset, Shield, CalendarClock } from "lucide-react"
 import Image from "next/image"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const benefits = [
   {
@@ -32,6 +40,40 @@ const benefits = [
 ]
 
 export function Benefits() {
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const cards = cardsRef.current.filter(Boolean)
+    if (cards.length === 0) return
+
+    // Stagger animation for benefit cards
+    gsap.fromTo(
+      cards,
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cards[0],
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    )
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   return (
     <section id="beneficios" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -57,7 +99,7 @@ export function Benefits() {
                 Tecnología de élite, soporte local
               </h2>
               <p className="mt-4 text-muted-foreground text-pretty">
-                Con DJI Ecuador, obtienes más que un drone. Obtienes la
+                Con DJI.ec, obtienes más que un drone. Obtienes la
                 tranquilidad de un distribuidor oficial con atención cercana.
               </p>
             </Reveal>
@@ -66,19 +108,29 @@ export function Benefits() {
               {benefits.map((b, i) => {
                 const Icon = b.icon
                 return (
-                  <Reveal key={b.title} delay={i * 0.08}>
-                    <div className="glass rounded-xl p-5 h-full transition-all duration-300 hover:bg-white/[0.06]">
-                      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-                        <Icon className="h-4 w-4 text-primary" />
-                      </div>
-                      <h3 className="text-sm font-bold text-foreground">
-                        {b.title}
-                      </h3>
-                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                        {b.description}
-                      </p>
-                    </div>
-                  </Reveal>
+                  <motion.div
+                    key={b.title}
+                    ref={(el) => {
+                      cardsRef.current[i] = el
+                    }}
+                    whileHover={{ scale: 1.03, y: -4 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="glass rounded-xl p-5 h-full"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10"
+                    >
+                      <Icon className="h-4 w-4 text-primary" />
+                    </motion.div>
+                    <h3 className="text-sm font-bold text-foreground">
+                      {b.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      {b.description}
+                    </p>
+                  </motion.div>
                 )
               })}
             </div>

@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
+import { DjiCategoriesBanner } from "@/components/dji-categories-banner"
 import { Products } from "@/components/products"
 import { Categories } from "@/components/categories"
 import { Benefits } from "@/components/benefits"
@@ -11,6 +12,7 @@ export default function Page() {
     <main className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <DjiCategoriesBanner />
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
       </div>

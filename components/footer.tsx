@@ -11,7 +11,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-xs text-muted-foreground">
-              &copy; 2026 DJI Ecuador &mdash; Lanzamiento 15 de marzo
+              &copy; 2026 DJI.ec &mdash; Lanzamiento 15 de marzo
             </p>
             <button
               onClick={() => setShowPrivacy(true)}
@@ -41,7 +41,7 @@ export function Footer() {
             </h2>
             <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
               <p>
-                En DJI Ecuador, respetamos tu privacidad. Los datos recopilados
+                En DJI.ec, respetamos tu privacidad. Los datos recopilados
                 a través del formulario de registro (nombre, email, teléfono,
                 ciudad e interés) se utilizan exclusivamente para contactarte
                 sobre el lanzamiento y productos DJI.
@@ -52,7 +52,7 @@ export function Footer() {
                 cualquier momento contactándonos.
               </p>
               <p>
-                Al registrarte, aceptas recibir comunicaciones de DJI Ecuador
+                Al registrarte, aceptas recibir comunicaciones de DJI.ec
                 relacionadas con productos, lanzamientos y promociones.
               </p>
             </div>

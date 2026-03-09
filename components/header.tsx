@@ -68,13 +68,13 @@ export function Header() {
             handleClick("#inicio")
           }}
           className="flex items-center gap-2"
-          aria-label="DJI Ecuador - Inicio"
+          aria-label="DJI.ec - Inicio"
         >
           <span className="text-lg font-bold tracking-tight text-foreground">
             DJI
           </span>
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            Ecuador
+            .ec
           </span>
         </a>
 

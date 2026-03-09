@@ -1,6 +1,6 @@
-# DJI Ecuador Landing Page
+# DJI.ec Landing Page
 
-Landing page oficial para el lanzamiento y captación de leads de DJI Ecuador.
+Landing page oficial para el lanzamiento y captación de leads de DJI.ec.
 
 ## Autoría
 
@@ -83,5 +83,5 @@ pnpm start        # Servidor de producción
 
 ## Licencia y uso
 
-Este repositorio corresponde al trabajo de Jectstore para DJI Ecuador.  
+Este repositorio corresponde al trabajo de Jectstore para DJI.ec.  
 Para uso comercial, redistribución o derivaciones, revisar permisos con el titular intelectual.

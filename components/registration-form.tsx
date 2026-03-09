@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Reveal } from "@/components/reveal"
 import { Loader2, CheckCircle2 } from "lucide-react"
 
@@ -88,20 +89,38 @@ export function RegistrationForm() {
     return (
       <section id="registro" className="relative overflow-hidden py-24 lg:py-32">
         <div className="mx-auto max-w-lg px-4 lg:px-8">
-          <Reveal>
-            <div className="glass rounded-2xl p-8 text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                <CheckCircle2 className="h-7 w-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                Registro recibido
-              </h2>
-              <p className="mt-3 text-muted-foreground">
-                Te contactaremos antes del lanzamiento. Gracias por tu interés
-                en DJI Ecuador.
-              </p>
-            </div>
-          </Reveal>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="glass rounded-2xl p-8 text-center"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10"
+            >
+              <CheckCircle2 className="h-7 w-7 text-primary" />
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="text-2xl font-bold text-foreground"
+            >
+              Registro recibido
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              className="mt-3 text-muted-foreground"
+            >
+              Te contactaremos antes del lanzamiento. Gracias por tu interés
+              en DJI.ec.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
     )
@@ -285,7 +304,7 @@ export function RegistrationForm() {
                   aria-describedby={errors.consent ? "consent-error" : undefined}
                 />
                 <span className="text-xs leading-relaxed text-muted-foreground">
-                  Acepto ser contactado por DJI Ecuador para recibir información
+                  Acepto ser contactado por DJI.ec para recibir información
                   sobre productos, lanzamientos y promociones.{" "}
                   <span className="text-primary">*</span>
                 </span>
@@ -298,17 +317,28 @@ export function RegistrationForm() {
             </div>
 
             {/* Server error */}
-            {status === "error" && serverError && (
-              <div className="mt-4 rounded-lg bg-primary/10 px-4 py-3">
-                <p className="text-sm text-primary">{serverError}</p>
-              </div>
-            )}
+            <AnimatePresence>
+              {status === "error" && serverError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-4 rounded-lg bg-primary/10 px-4 py-3"
+                >
+                  <p className="text-sm text-primary">{serverError}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Submit */}
-            <button
+            <motion.button
               type="submit"
               disabled={status === "loading"}
-              className="mt-6 w-full inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              whileHover={{ scale: status === "loading" ? 1 : 1.02, y: status === "loading" ? 0 : -2 }}
+              whileTap={{ scale: status === "loading" ? 1 : 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="mt-6 w-full inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {status === "loading" ? (
                 <>
@@ -318,7 +348,7 @@ export function RegistrationForm() {
               ) : (
                 "Registrarme Ahora"
               )}
-            </button>
+            </motion.button>
           </form>
         </Reveal>
       </div>

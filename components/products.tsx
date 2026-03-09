@@ -1,7 +1,15 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Reveal } from "@/components/reveal"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const products = [
   {
@@ -66,6 +74,29 @@ function scrollToRegistro() {
 }
 
 export function Products() {
+  const featuredRef = useRef<HTMLDivElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!featuredRef.current || !imageRef.current) return
+
+    // GSAP parallax effect for featured product image
+    gsap.to(imageRef.current, {
+      y: -40,
+      ease: "none",
+      scrollTrigger: {
+        trigger: featuredRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   return (
     <section id="productos" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -83,54 +114,108 @@ export function Products() {
 
         {/* Featured product */}
         <Reveal>
-          <div className="glass rounded-2xl overflow-hidden mb-8 group">
+          <motion.div
+            ref={featuredRef}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="glass rounded-2xl overflow-hidden mb-8 group"
+          >
             <div className="flex flex-col lg:flex-row">
-              <div className="relative w-full lg:w-3/5 aspect-[16/10] lg:aspect-auto lg:min-h-[400px]">
-                <Image
-                  src={products[0].image}
-                  alt={products[0].alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
+              <div
+                ref={imageRef}
+                className="relative w-full lg:w-3/5 aspect-[16/10] lg:aspect-auto lg:min-h-[400px] overflow-hidden"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src={products[0].image}
+                    alt={products[0].alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                  />
+                </motion.div>
               </div>
               <div className="flex flex-col justify-center p-8 lg:p-12 lg:w-2/5">
-                <span className="inline-flex w-fit items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wider mb-4">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  className="inline-flex w-fit items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wider mb-4"
+                >
                   Destacado
-                </span>
-                <h3 className="text-2xl font-bold text-foreground sm:text-3xl">
+                </motion.span>
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  className="text-2xl font-bold text-foreground sm:text-3xl"
+                >
                   {products[0].name}
-                </h3>
-                <p className="mt-2 text-lg text-muted-foreground">
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="mt-2 text-lg text-muted-foreground"
+                >
                   {products[0].tagline}
-                </p>
-                <p className="mt-4 text-sm text-muted-foreground">
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="mt-4 text-sm text-muted-foreground"
+                >
                   {products[0].ideal}
-                </p>
-                <button
+                </motion.p>
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ delay: 0.6, duration: 0.3 }}
                   onClick={scrollToRegistro}
-                  className="mt-6 inline-flex w-fit items-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+                  className="mt-6 inline-flex w-fit items-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/40"
                 >
                   Solicitar información
-                </button>
+                </motion.button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
 
         {/* Grid of products */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.slice(1).map((product, i) => (
             <Reveal key={product.name} delay={i * 0.08}>
-              <div className="glass rounded-xl overflow-hidden group h-full flex flex-col">
+              <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="glass rounded-xl overflow-hidden h-full flex flex-col"
+              >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                  <motion.div
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={product.image}
+                      alt={product.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
@@ -143,14 +228,17 @@ export function Products() {
                   <p className="mt-2 text-xs text-muted-foreground">
                     {product.ideal}
                   </p>
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05, x: 4 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
                     onClick={scrollToRegistro}
-                    className="mt-4 inline-flex w-fit items-center rounded-lg glass glass-hover px-4 py-2 text-xs font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
+                    className="mt-4 inline-flex w-fit items-center rounded-lg glass glass-hover px-4 py-2 text-xs font-semibold text-foreground"
                   >
                     Solicitar información
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
