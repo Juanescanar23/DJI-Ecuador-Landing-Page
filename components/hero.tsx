@@ -240,31 +240,31 @@ export function Hero() {
               exit="exit"
               className="max-w-2xl"
             >
-              <span className="mb-4 inline-flex items-center rounded-full bg-primary/20 border border-primary/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary backdrop-blur-sm">
+              <span className="mb-5 inline-flex items-center rounded-full bg-primary/15 border border-primary/30 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-primary backdrop-blur-md shadow-lg shadow-primary/10">
                 {slide.badge}
               </span>
 
-              <h1 className="mt-2 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-7xl text-balance">
+              <h1 className="mt-2 text-4xl font-black leading-[1.1] tracking-[-0.02em] text-white sm:text-6xl lg:text-8xl text-balance drop-shadow-2xl">
                 {slide.title}
               </h1>
-              <p className="mt-2 text-xl font-medium text-foreground/80 sm:text-2xl lg:text-3xl">
+              <p className="mt-4 text-xl font-light text-white/90 sm:text-3xl lg:text-4xl tracking-tight">
                 {slide.subtitle}
               </p>
 
-              <p className="mt-3 hidden max-w-lg text-base leading-relaxed text-foreground/60 text-pretty sm:block sm:text-lg">
+              <p className="mt-5 hidden max-w-xl text-base leading-relaxed text-white/70 text-pretty sm:block sm:text-lg font-light">
                 {slide.description}
               </p>
 
-              <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
                 <button
                   onClick={() => scrollTo("registro")}
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  className="inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-105 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   Registrarme Ahora
                 </button>
                 <button
                   onClick={() => scrollTo("productos")}
-                  className="inline-flex items-center justify-center rounded-lg bg-white/10 border border-white/15 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-white/15 hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center rounded-xl bg-white/10 border-2 border-white/20 backdrop-blur-md px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:bg-white/20 hover:border-white/30 hover:scale-105"
                 >
                   Ver Productos
                 </button>

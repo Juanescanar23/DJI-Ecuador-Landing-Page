@@ -50,11 +50,11 @@ export function Categories() {
 
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
         <Reveal>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
-              Explora nuestras categorías
+          <div className="text-center mb-20">
+            <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
+              Explora nuestras <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">categorías</span>
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-pretty">
+            <p className="mt-6 text-zinc-400 max-w-2xl mx-auto text-pretty text-lg font-light">
               Encuentra la solución perfecta para tu proyecto, profesión o pasión.
             </p>
           </div>
