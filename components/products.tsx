@@ -101,11 +101,11 @@ export function Products() {
     <section id="productos" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <Reveal>
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
-              Drones profesionales y <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">soluciones de vuelo</span>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
+              Drones profesionales y soluciones de vuelo
             </h2>
-            <p className="mt-6 text-zinc-400 max-w-3xl mx-auto text-pretty text-lg font-light leading-relaxed">
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty text-base">
               Desde fotografía aérea hasta agricultura de precisión, tenemos el
               drone perfecto para cada necesidad.
             </p>

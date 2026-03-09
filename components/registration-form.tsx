@@ -135,11 +135,11 @@ export function RegistrationForm() {
 
       <div className="relative mx-auto max-w-2xl px-4 lg:px-8">
         <Reveal>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
-              Regístrate para el <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">lanzamiento</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
+              Regístrate para el lanzamiento
             </h2>
-            <p className="mt-6 text-zinc-400 text-pretty text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-4 text-muted-foreground text-pretty">
               Completa el formulario y sé el primero en conocer el lanzamiento
               oficial del DJI Mavic 4 Pro en Ecuador.
             </p>

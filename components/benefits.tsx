@@ -95,11 +95,10 @@ export function Benefits() {
           {/* Content side */}
           <div className="flex-1">
             <Reveal>
-              <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl text-balance leading-[1.1]">
-                Tecnología de élite,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">soporte local</span>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
+                Tecnología de élite, soporte local
               </h2>
-              <p className="mt-6 text-zinc-400 text-pretty text-lg font-light leading-relaxed">
+              <p className="mt-4 text-muted-foreground text-pretty">
                 Con DJI.ec, obtienes más que un drone. Obtienes la
                 tranquilidad de un distribuidor oficial con atención cercana.
               </p>
