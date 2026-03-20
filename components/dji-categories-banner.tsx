@@ -92,50 +92,59 @@ export function DjiCategoriesBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-10 lg:mb-14"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
             Categorías Oficiales DJI
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-pretty text-base">
+          <p className="mt-3 text-sm text-muted-foreground max-w-2xl mx-auto text-pretty sm:text-base">
             Certificados y autorizados en todas las áreas de especialización DJI
           </p>
         </motion.div>
 
-        {/* Desktop: horizontal scroll */}
+        {/* Desktop: horizontal banner */}
         <div className="hidden lg:block">
-          <div className="grid grid-cols-5 gap-4">
+          <div className="flex rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl">
             {djiCategories.map((category, index) => (
               <div
                 key={category.id}
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="group relative"
+                className="group relative flex-1 cursor-pointer"
               >
-                <div className="glass rounded-xl overflow-hidden aspect-[3/4] relative transition-all duration-500 hover:bg-white/[0.06] hover:scale-[1.02]">
+                <div className="relative h-[400px] overflow-hidden transition-all duration-500 hover:flex-[1.15]">
                   <Image
                     src={category.image}
                     alt={category.title}
                     fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 50vw, 20vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                    sizes="20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 group-hover:from-black/80" />
+
+                  {/* Vertical separator line */}
+                  {index < djiCategories.length - 1 && (
+                    <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10" />
+                  )}
 
                   {/* DJI Logo watermark */}
-                  <div className="absolute top-3 left-3 text-white/30 font-bold text-sm tracking-tight">
-                    dji
-                  </div>
+                  <Image
+                    src="/logo-white.svg"
+                    alt="DJI"
+                    width={50}
+                    height={19}
+                    className="absolute top-4 left-4 opacity-30 h-4 w-auto"
+                  />
 
-                  {/* Category badge */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 flex flex-col items-center justify-end text-center">
-                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mb-3 shadow-lg shadow-primary/20">
-                      <div className="w-5 h-5 rounded-full bg-white" />
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center">
+                    <div className="transform transition-transform duration-500 group-hover:translate-y-[-8px]">
+                      <div className="w-3 h-3 rounded-full bg-white mb-4 mx-auto shadow-lg shadow-white/20" />
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-white leading-tight max-w-[150px]">
+                        {category.label}
+                      </p>
                     </div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/95 leading-tight px-2">
-                      {category.label}
-                    </p>
                   </div>
                 </div>
               </div>
@@ -143,43 +152,59 @@ export function DjiCategoriesBanner() {
           </div>
         </div>
 
-        {/* Mobile & Tablet: stacked cards */}
-        <div className="lg:hidden grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-          {djiCategories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group"
-            >
-              <div className="glass rounded-lg overflow-hidden aspect-[3/4] relative transition-all duration-300 active:scale-95">
-                <Image
-                  src={category.image}
-                  alt={category.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-active:scale-105"
-                  sizes="(max-width: 640px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        {/* Mobile & Tablet: compact grid */}
+        <div className="lg:hidden rounded-xl overflow-hidden border border-white/[0.06] shadow-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3">
+            {djiCategories.map((category, index) => (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="group relative"
+              >
+                <div className="relative h-[240px] sm:h-[280px] overflow-hidden transition-all duration-300 active:brightness-110">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-active:scale-105"
+                    sizes="(max-width: 640px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
 
-                {/* DJI Logo */}
-                <div className="absolute top-2 left-2 text-white/30 font-bold text-xs tracking-tight">
-                  dji
-                </div>
+                  {/* Grid separators */}
+                  {index % 2 === 0 && index < djiCategories.length - 1 && (
+                    <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10 sm:hidden" />
+                  )}
+                  {index < 2 && (
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+                  )}
+                  {index < 3 && (
+                    <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10 hidden sm:block" />
+                  )}
 
-                <div className="absolute inset-x-0 bottom-0 p-3 flex flex-col items-center justify-end text-center">
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center mb-2 shadow-lg shadow-primary/20">
-                    <div className="w-4 h-4 rounded-full bg-white" />
+                  {/* DJI Logo */}
+                  <Image
+                    src="/logo-white.svg"
+                    alt="DJI"
+                    width={40}
+                    height={15}
+                    className="absolute top-3 left-3 opacity-30 h-3 w-auto"
+                  />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-end p-4 text-center">
+                    <div className="w-2.5 h-2.5 rounded-full bg-white mb-3 shadow-lg shadow-white/20" />
+                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.18em] text-white leading-tight px-2 max-w-[120px]">
+                      {category.label}
+                    </p>
                   </div>
-                  <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.12em] text-white/95 leading-tight px-1">
-                    {category.label}
-                  </p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Footer text */}
@@ -188,10 +213,10 @@ export function DjiCategoriesBanner() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-10 flex justify-center"
+          className="mt-8 lg:mt-10 flex justify-center"
         >
-          <div className="text-center opacity-40">
-            <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
+          <div className="text-center opacity-30">
+            <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
               Distribuidor Oficial DJI
             </p>
           </div>
