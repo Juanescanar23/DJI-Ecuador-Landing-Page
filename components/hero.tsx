@@ -103,8 +103,8 @@ const AUTOPLAY_MS = 6000
 export function Hero() {
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const pausedRef = useRef(false)
   const touchStartRef = useRef<number | null>(null)
   const isMobile = useIsMobile()
 
@@ -128,12 +128,12 @@ export function Hero() {
 
   // autoplay
   useEffect(() => {
-    if (pausedRef.current) return
+    if (isPaused) return
     timeoutRef.current = setTimeout(next, AUTOPLAY_MS)
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [current, next])
+  }, [current, next, isPaused])
 
   const slide = slides[current]
 
@@ -181,11 +181,11 @@ export function Hero() {
       id="inicio"
       className="relative h-svh min-h-[600px] max-h-[1100px] w-full overflow-hidden"
       onMouseEnter={() => {
-        pausedRef.current = true
+        setIsPaused(true)
         if (timeoutRef.current) clearTimeout(timeoutRef.current)
       }}
       onMouseLeave={() => {
-        pausedRef.current = false
+        setIsPaused(false)
       }}
       onTouchStart={(e) => {
         touchStartRef.current = e.touches[0].clientX
