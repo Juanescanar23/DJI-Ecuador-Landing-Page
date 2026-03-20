@@ -20,7 +20,7 @@ export function Footer() {
                 className="h-6 w-auto opacity-80"
               />
               <p className="text-xs text-muted-foreground">
-                &copy; 2026 DJI.ec &mdash; Lanzamiento 15 de marzo
+                &copy; 2026 DJI.ec &mdash; Lanzamiento 1 de abril
               </p>
             </div>
             <button

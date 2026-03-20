@@ -275,7 +275,7 @@ export function Hero() {
           {/* Countdown - always visible */}
           <div className="mt-6 sm:mt-10">
             <p className="mb-2 text-[10px] uppercase tracking-widest text-foreground/40 sm:mb-3 sm:text-xs">
-              Aperturamos el 15 de marzo de 2026
+              Aperturamos el 1 de abril de 2026
             </p>
             <Countdown />
           </div>

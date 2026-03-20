@@ -139,7 +139,7 @@ export function Benefits() {
               <div className="mt-8 glass rounded-xl p-5 flex items-center gap-4">
                 <div className="h-10 w-1 rounded-full bg-primary shrink-0" />
                 <p className="text-sm font-medium text-foreground">
-                  Sé el primero en enterarte del lanzamiento del 15 de marzo.
+                  Sé el primero en enterarte del lanzamiento del 1 de abril.
                 </p>
               </div>
             </Reveal>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 
-const LAUNCH_DATE = new Date("2026-03-15T00:00:00-05:00") // Ecuador timezone
+const LAUNCH_DATE = new Date("2026-04-01T00:00:00-05:00") // Ecuador timezone
 
 interface TimeLeft {
   days: number
