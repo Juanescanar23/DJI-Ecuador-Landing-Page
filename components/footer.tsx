@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 
 export function Footer() {
   const [showPrivacy, setShowPrivacy] = useState(false)
@@ -10,9 +11,18 @@ export function Footer() {
       <footer className="border-t border-white/[0.06] py-8">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-xs text-muted-foreground">
-              &copy; 2026 DJI.ec &mdash; Lanzamiento 15 de marzo
-            </p>
+            <div className="flex flex-col items-center sm:items-start gap-3">
+              <Image
+                src="/logo-white.svg"
+                alt="DJI.ec"
+                width={100}
+                height={38}
+                className="h-6 w-auto opacity-80"
+              />
+              <p className="text-xs text-muted-foreground">
+                &copy; 2026 DJI.ec &mdash; Lanzamiento 15 de marzo
+              </p>
+            </div>
             <button
               onClick={() => setShowPrivacy(true)}
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"

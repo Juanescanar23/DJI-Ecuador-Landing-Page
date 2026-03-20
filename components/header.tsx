@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
@@ -67,15 +68,17 @@ export function Header() {
             e.preventDefault()
             handleClick("#inicio")
           }}
-          className="flex items-center gap-2"
+          className="flex items-center"
           aria-label="DJI.ec - Inicio"
         >
-          <span className="text-lg font-bold tracking-tight text-foreground">
-            DJI
-          </span>
-          <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            .ec
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="DJI.ec"
+            width={120}
+            height={46}
+            className="h-7 w-auto md:h-8 text-foreground"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
