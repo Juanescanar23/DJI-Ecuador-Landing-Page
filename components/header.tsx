@@ -72,11 +72,11 @@ export function Header() {
           aria-label="DJI.ec - Inicio"
         >
           <Image
-            src="/logo.svg"
+            src="/logo-white.svg"
             alt="DJI.ec"
             width={120}
             height={46}
-            className="h-7 w-auto md:h-8 text-foreground"
+            className="h-7 w-auto md:h-8"
             priority
           />
         </a>
